@@ -1,4 +1,4 @@
-
+from sqlalchemy.orm import joinedload
 from src.models import db
 from src.models.character_model import Characters
 from src.models.episode_model import Episodes
@@ -24,7 +24,12 @@ class CharacterRepository:
 
     def character_detail(self, id: int):
         try:
-            character = db.session.get(Characters, id)
+            character = (
+                    db.session.query(Characters)
+                    .options(joinedload(Characters.origin), joinedload(Characters.location))
+                    .filter(Characters.id == id)
+                    .one_or_none()
+            )
             if not character:
                 return None
 
