@@ -1,0 +1,138 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36" version="28.2.5">
+  <diagram name="Page-1" id="d2KKvzZKzaXlO5-fS00E">
+    <mxGraphModel dx="1302" dy="756" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CXkyjbCqhI1Qn80y_RbN-1" target="CXkyjbCqhI1Qn80y_RbN-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-1" value="frontend exibe pagina de pesquisa" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="171" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CXkyjbCqhI1Qn80y_RbN-2" target="CXkyjbCqhI1Qn80y_RbN-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-2" value="Usuario digita nome do personagem e clica em search ou pagina" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="361" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="CXkyjbCqhI1Qn80y_RbN-4" target="CXkyjbCqhI1Qn80y_RbN-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-4" value="front faz uma requisição get no backend com query params:&lt;br&gt;&amp;nbsp;nomePersonagem&lt;div&gt;pagina&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="530" y="220" width="131" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CXkyjbCqhI1Qn80y_RbN-6" target="CXkyjbCqhI1Qn80y_RbN-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-6" value="backend recebe requisição get e verifica se os dados recebidos são validos" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="716" y="225" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CXkyjbCqhI1Qn80y_RbN-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-8" value="banco procura registros de nomePersonagem com LIMIT 20 e OFFSET (pagina-1)*20" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="711.5" y="345" width="139" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CXkyjbCqhI1Qn80y_RbN-10" target="CXkyjbCqhI1Qn80y_RbN-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-10" value="backend retorna para frontend os personagens&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="171" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="CXkyjbCqhI1Qn80y_RbN-12" target="CXkyjbCqhI1Qn80y_RbN-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-12" value="frontend retorna mensagem de erro" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="361" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CXkyjbCqhI1Qn80y_RbN-15" target="CXkyjbCqhI1Qn80y_RbN-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-15" value="frontend altera estado da pagina de personagens de acordo com resposta" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="171" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CXkyjbCqhI1Qn80y_RbN-17" target="CXkyjbCqhI1Qn80y_RbN-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-17" value="front end exibe card para cada personagem retornado na requisição" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="356" y="455" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CXkyjbCqhI1Qn80y_RbN-19" target="CXkyjbCqhI1Qn80y_RbN-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-19" value="usuario clica no personagem desejado" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="535.5" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CXkyjbCqhI1Qn80y_RbN-21" target="CXkyjbCqhI1Qn80y_RbN-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-21" value="frontend faz uma requisição get passando o id do personagem clicado na url da requisição" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="715" y="452.5" width="131" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CXkyjbCqhI1Qn80y_RbN-22">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-22" value="backend recebe requisição get e verifica se dados são validos" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="721" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CXkyjbCqhI1Qn80y_RbN-23" target="CXkyjbCqhI1Qn80y_RbN-24" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-23" value="banco procura id especificado na requisição" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="535.5" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CXkyjbCqhI1Qn80y_RbN-24" target="i2n7LHA3sL_r-jDhT_A0-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-24" value="backend trata dados retornados do banco" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="366" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="CXkyjbCqhI1Qn80y_RbN-25" target="CXkyjbCqhI1Qn80y_RbN-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-25" value="frontend exibe informações detalahdas do personagem com json retornado" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-15" y="585" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CXkyjbCqhI1Qn80y_RbN-33" target="CXkyjbCqhI1Qn80y_RbN-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="50" y="210" />
+              <mxPoint x="421" y="210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CXkyjbCqhI1Qn80y_RbN-33" value="frontend fecha card de detalhe de usuario" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-10" y="452.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="i2n7LHA3sL_r-jDhT_A0-3" target="CXkyjbCqhI1Qn80y_RbN-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="i2n7LHA3sL_r-jDhT_A0-3" target="CXkyjbCqhI1Qn80y_RbN-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="684.5" y="430" as="sourcePoint" />
+            <mxPoint x="320" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="596" y="430" />
+              <mxPoint x="320" y="430" />
+              <mxPoint x="320" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-3" value="backend trata dados retornados do banco ou exibe erro" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="535.5" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="i2n7LHA3sL_r-jDhT_A0-13" target="CXkyjbCqhI1Qn80y_RbN-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i2n7LHA3sL_r-jDhT_A0-13" value="backend retorna para frontend os dados tratados" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
