@@ -8,43 +8,27 @@ from sqlalchemy import asc, desc
 
 class CharacterRepository:
 
-    def find_characters(self, name=None, limit=20, offset=0):
-        try:
-            query = Characters.query.order_by(asc(Characters.id))
+    def get_all_characters(self, name: str | None, limit: int, offset: int):
+        query = Characters.query.options(
+            joinedload(Characters.origin),
+            joinedload(Characters.location),
+        )
+        if name:
+            query = query.filter(Characters.name.ilike(f"%{name}%"))
+        return query.order_by(Characters.id.asc()).limit(limit).offset(offset).all()    
 
-            if name:
-                query = query.filter(Characters.name.ilike(f"%{name}%"))
-
-            result = query.limit(limit).offset(offset).all()
-            return result
-
-        except Exception:
-            db.session.rollback()
-            raise
-
-    def character_detail(self, id: int):
-        try:
-            character = (
-                    db.session.query(Characters)
-                    .options(joinedload(Characters.origin), joinedload(Characters.location))
-                    .filter(Characters.id == id)
-                    .one_or_none()
+    def get_character_by_id(self, id: int):
+        return (
+            Characters.query.options(
+                joinedload(Characters.episodes),
+                joinedload(Characters.origin),
+                joinedload(Characters.location),
             )
-            if not character:
-                return None
+            .get(id)
+        )
 
-            last_ep = (
-                db.session.query(Episodes)
-                .join(characters_episodes, Episodes.id == characters_episodes.c.episode_id)
-                .filter(characters_episodes.c.character_id == character.id)
-                .order_by(desc(Episodes.air_date), desc(Episodes.id))
-                .first()
-            )
-
-            setattr(character, "last_episode", last_ep)
-            return character
-
-        except Exception:
-            db.session.rollback()
-            raise
-
+    def count_characters(self, name: str | None):
+        query = Characters.query
+        if name:
+            query = query.filter(Characters.name.ilike(f"%{name}%"))
+        return query.count()

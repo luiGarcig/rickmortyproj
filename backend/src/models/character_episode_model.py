@@ -1,4 +1,3 @@
-
 from src.models import db
 
 characters_episodes = db.Table(

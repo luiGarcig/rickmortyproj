@@ -1,6 +1,4 @@
-from src.models import db
-from src.models.character_episode_model import characters_episodes
-
+from src.models import db, ma
 
 class Episodes(db.Model):
     __tablename__ = "episodes"
@@ -12,9 +10,16 @@ class Episodes(db.Model):
 
     characters = db.relationship(
         "Characters",
-        secondary=characters_episodes,
-        back_populates="episodes"
+        secondary="characters_episodes",
+        back_populates="episodes",
+        lazy="selectin",
     )
 
     def __repr__(self):
         return f"<Episode {self.name}>"
+
+class EpisodeOutput(ma.Schema):
+    id = ma.Integer()
+    name = ma.String()
+    air_date = ma.String()
+    episode = ma.String()

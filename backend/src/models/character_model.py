@@ -1,6 +1,4 @@
 from src.models import db, ma
-from src.models.character_episode_model import characters_episodes
-from src.models.location_model import Locations
 
 class Characters(db.Model):
     __tablename__ = "characters"
@@ -18,40 +16,28 @@ class Characters(db.Model):
 
     episodes = db.relationship(
         "Episodes",
-        secondary=characters_episodes,
+        secondary="characters_episodes",
         back_populates="characters"
     )
 
     origin = db.relationship(
         "Locations",
-        primaryjoin="Characters.origin_id == Locations.id",
         foreign_keys=[origin_id],
-        lazy="joined",
-        viewonly=False,
+        back_populates='native',
+        uselist=False,
+        lazy=True
     )
 
     location = db.relationship(
         "Locations",
-        primaryjoin="Characters.location_id == Locations.id",
         foreign_keys=[location_id],
-        lazy="joined",
-        viewonly=False,
+        back_populates='residents',
+        uselist=False,
+        lazy=True,
     )
 
     def __repr__(self):
         return f"<Character {self.name}>"
-
-
-class EpisodeOutput(ma.Schema):
-    id = ma.Integer()
-    name = ma.String()
-    air_date = ma.String()  
-
-class LocationOutput(ma.Schema):
-    id = ma.Integer()
-    name = ma.String()
-    type = ma.String()
-    dimension = ma.String()
 
 class CharacterOutput(ma.Schema):
     id = ma.Integer()
@@ -62,22 +48,26 @@ class CharacterOutput(ma.Schema):
     gender = ma.String()
     image = ma.String()
     last_episode = ma.Method("get_last_episode") 
-    origin = ma.Method("get_origin")
-    location = ma.Method("get_location")
+    origin = ma.Nested("LocationOutput")
+    location = ma.Nested("LocationOutput")
 
     def get_last_episode(self, obj):
-        episode = getattr(obj, "last_episode", None)
-        return EpisodeOutput().dump(episode) if episode else None
+        if not getattr(obj, "episodes", None):
+            return None
+        ep = max(obj.episodes, key=lambda e: e.id)
+        from src.models.episode_model import EpisodeOutput
+        return EpisodeOutput().dump(ep)
 
-    def get_origin(self, obj):
-        origin = getattr(obj, "origin", None)
-        return LocationOutput().dump(origin) if origin else None
-
-    def get_location(self,obj):
-        location = getattr(obj, "location", None)
-        return LocationOutput().dump(location) if location else None
-    
-class EveryCharacterOutput(ma.Schema):
+class CharacterListOutput(ma.Schema):
+    id = ma.Integer()
     name = ma.String()
     species = ma.String()
+    status = ma.String()
     image = ma.String()
+
+class CharacterPaginationOutput(ma.Schema):
+    page = ma.Integer()
+    per_page = ma.Integer()
+    total = ma.Integer()
+    total_pages = ma.Integer()
+    items = ma.Nested("CharacterOutput", many=True)
