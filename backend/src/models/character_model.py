@@ -1,4 +1,5 @@
 from src.models import db, ma
+from sqlalchemy.ext.hybrid import hybrid_property
 
 class Characters(db.Model):
     __tablename__ = "characters"
@@ -36,6 +37,17 @@ class Characters(db.Model):
         lazy=True,
     )
 
+    @hybrid_property
+    def last_episode(self) -> int:
+        episodes_list = self.episodes
+
+        if not episodes_list:
+            return None
+ 
+        last_episode = max(episodes_list, key=lambda e: (e.id or 0))
+ 
+        return last_episode
+
     def __repr__(self):
         return f"<Character {self.name}>"
 
@@ -47,16 +59,9 @@ class CharacterOutput(ma.Schema):
     type = ma.String()
     gender = ma.String()
     image = ma.String()
-    last_episode = ma.Method("get_last_episode") 
+    last_episode = ma.Nested("EpisodeOutput") 
     origin = ma.Nested("LocationOutput")
     location = ma.Nested("LocationOutput")
-
-    def get_last_episode(self, obj):
-        if not getattr(obj, "episodes", None):
-            return None
-        ep = max(obj.episodes, key=lambda e: e.id)
-        from src.models.episode_model import EpisodeOutput
-        return EpisodeOutput().dump(ep)
 
 class CharacterListOutput(ma.Schema):
     id = ma.Integer()
@@ -70,4 +75,4 @@ class CharacterPaginationOutput(ma.Schema):
     per_page = ma.Integer()
     total = ma.Integer()
     total_pages = ma.Integer()
-    items = ma.Nested("CharacterOutput", many=True)
+    items = ma.Nested("CharacterListOutput", many=True)

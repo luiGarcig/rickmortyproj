@@ -9,21 +9,14 @@ from sqlalchemy import asc, desc
 class CharacterRepository:
 
     def get_all_characters(self, name: str | None, limit: int, offset: int):
-        query = Characters.query.options(
-            joinedload(Characters.origin),
-            joinedload(Characters.location),
-        )
+        query = Characters.query.options()
         if name:
             query = query.filter(Characters.name.ilike(f"%{name}%"))
         return query.order_by(Characters.id.asc()).limit(limit).offset(offset).all()    
 
     def get_character_by_id(self, id: int):
         return (
-            Characters.query.options(
-                joinedload(Characters.episodes),
-                joinedload(Characters.origin),
-                joinedload(Characters.location),
-            )
+            Characters.query.options()
             .get(id)
         )
 
